@@ -3,7 +3,12 @@
   <table>
     <tr>
       <td>Tên danh mục:</td>
-      <td><input type="text" formControlName="name"></td>
+      <td><input type="text" id="name" formControlName="name"></td>
+      <div [hidden]="nameControl.valid || !nameControl.touched">
+        <div style="color: red" *ngIf="nameControl.errors?.required">Name is required</div>
+        <div style="color: red" *ngIf="nameControl.errors?.minlength">Minlength is 3</div>
+        <div style="color: red" *ngIf="nameControl.errors?.maxlength">maxLength is 15</div>
+      </div>
     </tr>
     <tr>
       <td></td>
