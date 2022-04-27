@@ -17,12 +17,7 @@ export class CategoryEditComponent implements OnInit {
               private router: Router) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = +paramMap.get('id');
-      const category = this.getCategory(this.id);
-      console.log(category);
-      this.categoryForm = new FormGroup({
-        id: new FormControl(category.id),
-        name: new FormControl(category.name),
-      });
+      this.getCategory(this.id);
     });
   }
 
@@ -30,12 +25,19 @@ export class CategoryEditComponent implements OnInit {
   }
 
   getCategory(id: number) {
-    return this.categoryService.findById(id);
+    return this.categoryService.findById(id).subscribe(category => {
+      this.categoryForm = new FormGroup({
+        name: new FormControl(category.name),
+      });
+    });
   }
 
   updateCategory(id: number) {
     const category = this.categoryForm.value;
-    this.categoryService.updateCategory(id, category);
-    this.router.navigate(['/category/list']);
+    this.categoryService.updateCategory(id, category).subscribe(() => {
+      this.router.navigate(['/category/list']);
+    }, e => {
+      console.log(e);
+    });
   }
 }

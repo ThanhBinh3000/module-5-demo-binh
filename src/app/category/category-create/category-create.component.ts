@@ -10,17 +10,20 @@ import {Router} from '@angular/router';
 })
 export class CategoryCreateComponent implements OnInit {
   categoryForm: FormGroup = new FormGroup({
-    id: new FormControl(),
     name: new FormControl(),
   });
   constructor(private categoryService: CategoryService, private router: Router) { }
-  submit() {
-    const category = this.categoryForm.value;
-    this.categoryService.saveCategory(category);
-    this.categoryForm.reset();
-    this.router.navigate(['/category/list']);
-  }
+
   ngOnInit() {
   }
 
+  submit() {
+    const category = this.categoryForm.value;
+    this.categoryService.saveCategory(category).subscribe(() => {
+      this.categoryForm.reset();
+      this.router.navigate(['/category/list']);
+    }, e => {
+      console.log(e);
+    });
+  }
 }

@@ -2,16 +2,14 @@
 <form [formGroup]="categoryForm" (ngSubmit)="submit()">
   <table>
     <tr>
-      <td>Mã danh mục:</td>
-      <td><input type="number" formControlName="id"></td>
-    </tr>
-    <tr>
       <td>Tên danh mục:</td>
       <td><input type="text" formControlName="name"></td>
     </tr>
     <tr>
       <td></td>
-      <td><button>Tạo mới</button></td>
+      <td>
+        <button>Tạo mới</button>
+      </td>
     </tr>
   </table>
 </form>
