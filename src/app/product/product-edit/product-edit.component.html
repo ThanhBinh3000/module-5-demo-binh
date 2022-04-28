@@ -11,7 +11,7 @@
       <td><input type="text" id="name" formControlName="name"></td>
       <div [hidden]="nameControl.valid || !nameControl.touched">
         <div style="color: red" *ngIf="nameControl.errors?.required">Name is required</div>
-        <div style="color: red" *ngIf="nameControl.errors?.minlength">Minlength is 3</div>
+        <div style="color: red" *ngIf="nameControl.errors?.minlength">Minlength is 1</div>
         <div style="color: red" *ngIf="nameControl.errors?.maxlength">maxLength is 15</div>
       </div>
     </tr>
@@ -29,6 +29,13 @@
       <td>image</td>
       <td><input type="text" formControlName="image"></td>
       <p style="color: red" [hidden]="idControl.valid || !idControl.touched">Id is required</p>
+    </tr>
+    <tr>
+      <td>category</td>
+      <select id="category" formControlName="category">
+        <option [ngValue]="null" disabled>Chọn danh mục sản phẩm</option>
+        <option *ngFor="let category of categoryList" [value]="category.id" >{{category.name}}</option>
+      </select>
     </tr>
     <tr>
       <td></td>
