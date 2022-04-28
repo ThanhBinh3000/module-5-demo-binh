@@ -32,6 +32,9 @@ export class ProductCreateComponent implements OnInit {
   get descriptionControl() {
     return this.productForm.get('description');
   }
+  get imageControl() {
+    return this.productForm.get('image');
+  }
   ngOnInit() {
   }
 

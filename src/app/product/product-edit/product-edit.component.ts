@@ -33,6 +33,9 @@ export class ProductEditComponent implements OnInit {
   get descriptionControl() {
     return this.productForm.get('description');
   }
+  get imageControl() {
+    return this.productForm.get('image');
+  }
   ngOnInit() {
   }
 
@@ -42,13 +45,14 @@ export class ProductEditComponent implements OnInit {
         id: new FormControl('', [Validators.required]),
         name: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]),
         price: new FormControl('', [Validators.required]),
-        description: new FormControl('', Validators.required),
-        image: new FormControl('', Validators.required)
+        description: new FormControl('', [Validators.required]),
+        image: new FormControl('', [Validators.required]),
       });
       this.idControl.setValue(product.id);
       this.nameControl.setValue(product.name);
       this.priceControl.setValue(product.price);
       this.descriptionControl.setValue(product.description);
+      this.imageControl.setValue(product.image);
     });
   }
 
