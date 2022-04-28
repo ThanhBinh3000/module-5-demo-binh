@@ -8,6 +8,9 @@ const API_URL = `${environment.apiUrl}`;
   providedIn: 'root'
 })
 export class CategoryService {
+    listCategory() {
+        throw new Error('Method not implemented.');
+    }
 
   constructor(private http: HttpClient) {
   }

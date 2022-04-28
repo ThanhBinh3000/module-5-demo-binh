@@ -3,19 +3,32 @@
   <table>
     <tr>
       <td>Mã sản phẩm:</td>
-      <td><input type="number" formControlName="id"></td>
+      <td><input type="number" id="id" formControlName="id"></td>
+      <p style="color: red" [hidden]="idControl.valid || !idControl.touched">Id is required</p>
     </tr>
     <tr>
       <td>Tên sản phẩm:</td>
-      <td><input type="text" formControlName="name"></td>
+      <td><input type="text" id="name" formControlName="name"></td>
+      <div [hidden]="nameControl.valid || !nameControl.touched">
+        <div style="color: red" *ngIf="nameControl.errors?.required">Name is required</div>
+        <div style="color: red" *ngIf="nameControl.errors?.minlength">Minlength is 3</div>
+        <div style="color: red" *ngIf="nameControl.errors?.maxlength">maxLength is 15</div>
+      </div>
     </tr>
     <tr>
       <td>Giá sản phẩm</td>
       <td><input type="number" formControlName="price"></td>
+      <p style="color: red" [hidden]="idControl.valid || !idControl.touched">Id is required</p>
     </tr>
     <tr>
       <td>Mô tả về sản phẩm</td>
       <td><input type="text" formControlName="description"></td>
+      <p style="color: red" [hidden]="idControl.valid || !idControl.touched">Id is required</p>
+    </tr>
+    <tr>
+      <td>image</td>
+      <td><input type="text" formControlName="image"></td>
+      <p style="color: red" [hidden]="idControl.valid || !idControl.touched">Id is required</p>
     </tr>
     <tr>
       <td></td>

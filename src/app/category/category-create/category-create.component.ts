@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CategoryService} from '../../service/category.service';
 import {Router} from '@angular/router';
+import {Category} from '../../model/category';
 
 @Component({
   selector: 'app-category-create',
@@ -12,7 +13,6 @@ export class CategoryCreateComponent implements OnInit {
   categoryForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
   });
-  private category: any;
 
 
   constructor(private categoryService: CategoryService, private router: Router) { }
@@ -21,7 +21,6 @@ export class CategoryCreateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.nameControl.setValue(this.category.name);
   }
 
 

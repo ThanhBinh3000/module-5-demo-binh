@@ -7,6 +7,7 @@
     <td>Tên</td>
     <td>Giá</td>
     <td>Mô tả</td>
+    <td>image</td>
     <td colspan="2">Action</td>
   </tr>
   </thead>
@@ -15,6 +16,7 @@
     <td>{{product.name}}</td>
     <td>{{product.price}}</td>
     <td>{{product.description}}</td>
+    <td><img [src]="product.image" style="max-width: 100%" width="70" height="100"></td>
     <td><a [routerLink]="['/product/edit',product.id]">Edit</a></td>
     <td><a [routerLink]="['/product/delete',product.id]">Delete</a></td>
   </tr>
